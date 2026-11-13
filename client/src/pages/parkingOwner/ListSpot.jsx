@@ -14,8 +14,8 @@ const ListRoom = () => {
           <thead className='bg-gray-50'>
               <tr>
                 <th className='py-3 px-4 text-gray-800 font-medium'>Spot Type</th>
-                <th className='py-3 px-4 text-gray-800 font-medium max-sm:hidden'>Total Spots</th>
-                <th className='py-3 px-4 text-gray-800 font-medium'>Price/hour</th>
+                
+                <th className='py-3 px-4 text-gray-800 font-medium'>Price/Day</th>
                 <th className='py-3 px-4 text-center text-gray-800 font-medium'>Actions</th>
               </tr>
             </thead>
@@ -26,11 +26,9 @@ const ListRoom = () => {
                     <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
                       {item.spotType}
                     </td>
+                    
                     <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
-                      {item.totalSpot}
-                    </td>
-                    <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
-                      {item.pricePerHour}
+                      {item.pricePerDay}
                     </td>
                     <td className='py-3 px-4 text-center border-t border-gray-300 text-sm text-red-500'>
                       <label className='inline-flex relative items-center cursor-pointer text-gray-900 gap-3'>

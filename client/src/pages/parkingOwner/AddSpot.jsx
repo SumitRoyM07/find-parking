@@ -10,7 +10,7 @@ const AddSpot = () => {
   })
   const [inputs,setInputs]=useState({
     spotType: '',
-    pricePerHour: 0,
+    pricePerDay: 0,
     totalSpot: 0,
   })
   
@@ -44,17 +44,12 @@ const AddSpot = () => {
         </div>
         <div>
           <p className='mt-4 text-gray-800'>
-            Price <span className='text-xs'>/hour</span>
+            Price <span className='text-xs'>/day</span>
           </p>
-          <input type="number" placeholder='0' className='border border-gray-300 mt-1 rounded p-2 w-24' value={inputs.pricePerHour} onChange={e=>setInputs({...inputs, pricePerHour: e.target.value})}/>
+          <input type="number" placeholder='0' className='border border-gray-300 mt-1 rounded p-2 w-24' value={inputs.pricePerDay} onChange={e=>setInputs({...inputs, pricePerDay: e.target.value})}/>
         </div>
       </div>
-        <p className='mt-4 text-gray-800'>
-          Total Number of Spots
-        </p>
-        <div className=''>
-          <input type="number" placeholder='0' className='border border-gray-300 mt-1 rounded p-2 w-40' value={inputs.totalSpot} onChange={e=>setInputs({...inputs, totalSpot: e.target.value})}/>
-        </div>
+        
         <button className='bg-primary text-white px-8 py-2 rounded mt-8 hover:bg-blue-500 cursor-pointer'>
           Add Spot
         </button>

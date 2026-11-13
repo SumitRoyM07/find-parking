@@ -15,7 +15,7 @@ const ParkingCard = ({spot,index}) => {
                 <span>{spot.parking.address}</span>
             </div>
             <div className='flex items-center justify-between mt-4'>
-                <p><span className='text-xl text-gray-800'>₹{spot.pricePerHour}</span>/hour</p>
+                <p><span className='text-xl text-gray-800'>₹{spot.pricePerDay}</span>/day</p>
                 <button className='px-4 py-4 text-sm font-medium border border-gray-300 rounded hover:bg-blue-600 hover:text-white transition-all cursor-pointer'>Book now</button>
             </div>
         </div>

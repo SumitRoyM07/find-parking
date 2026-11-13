@@ -2,11 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { assets, spotsDummyData } from '../assets/assets'
 
+const hours = Array.from({ length: 24 }, (_, h) => {
+    const period = h < 12 ? "AM" : "PM";
+    const hour12 = h % 12 === 0 ? 12 : h % 12;
+    return { value: h, label: `${hour12}:00 ${period}` };
+});
+
 
 const SpotDetails = () => {
   const { id } = useParams()
   const [spot, setSpot] = useState(null)
   const [mainImage, setMainImage] = useState(null)
+  const [parkIn, setParkIn] = useState("");
+  const [parkOut, setParkOut] = useState("");
+
+  const handleParkInChange = (e) => {
+        const value = e.target.value;
+        setParkIn(value);
+        // reset Park out if it is no longer after Park in
+        if (parkOut !== "" && Number(parkOut) <= Number(value)) {
+            setParkOut("");
+        }
+    };
 
   useEffect(() => {
     const spot = spotsDummyData.find(spot => spot._id === id)
@@ -39,7 +56,7 @@ const SpotDetails = () => {
           </div>
         </div>
         {/* Spot Price */}
-        <p className='font-medium text-2xl'>₹{spot.pricePerHour}/hour</p>
+        <p className='font-medium text-2xl'>₹{spot.pricePerDay}/day</p>
       </div>
       
       {/* ParkIn ParkOut Form */}
@@ -47,15 +64,31 @@ const SpotDetails = () => {
         
         <div className='flex flex-col flex-wrap md:flex-row items-start md:items-center gap-4 md:gap-10 text-gray-500'>
           
-          <div className='flex flex-col'>
-            <label htmlFor="parkInTime" className='font-medium'>Park-In</label>
-              <input type="time" id="parkInTime" placeholder='Park-In' className='w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none' required/>
-          </div>
+          <div>
+                <div className='flex items-center gap-2'>
+                  <img src={assets.calenderIcon} alt="" className='h-4' />
+                  <label htmlFor="parkIn">Park in</label>
+                </div>
+                <input
+                    id="parkIn"
+                    type="date"
+                    className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none bg-white"
+                    required
+                />
+            </div>
 
-          <div className='flex flex-col'>
-            <label htmlFor="parkOutTime" className='font-medium'>Park-Out</label>
-              <input type="time" id="parkOutTime" placeholder='Park-Out' className='w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none' required/>
-          </div>
+            <div>
+                <div className='flex items-center gap-2'>
+                  <img src={assets.calenderIcon} alt="" className='h-4' />
+                  <label htmlFor="parkOut">Park out</label>
+                </div>
+                <input
+                    id="parkOut"
+                    type="date"
+                    className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none bg-white"
+                    required
+                />
+            </div>
 
           <div className='flex flex-col'>
             <label htmlFor="vehiclePlate" className='font-medium'>Vehicle-Plate</label>

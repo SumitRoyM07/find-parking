@@ -45,39 +45,28 @@ const Hero = () => {
 
             <div>
                 <div className='flex items-center gap-2'>
+                    <img src={assets.calenderIcon} alt="" className='h-4' />
                     <label htmlFor="parkIn">Park in</label>
                 </div>
-                <select
+                <input
                     id="parkIn"
-                    value={parkIn}
-                    onChange={handleParkInChange}
+                    type="date"
                     className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none bg-white"
-                    required>
-                    <option value="" disabled>Select</option>
-                    {hours.slice(0, 23).map((h) => (
-                        <option value={h.value} key={h.value}>{h.label}</option>
-                    ))}
-                </select>
+                    required
+                />
             </div>
 
             <div>
                 <div className='flex items-center gap-2'>
+                    <img src={assets.calenderIcon} alt="" className='h-4' />
                     <label htmlFor="parkOut">Park out</label>
                 </div>
-                <select
+                <input
                     id="parkOut"
-                    value={parkOut}
-                    onChange={(e) => setParkOut(e.target.value)}
-                    disabled={parkIn === ""}
-                    className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none bg-white disabled:bg-gray-100"
-                    required>
-                    <option value="" disabled>Select</option>
-                    {hours
-                        .filter((h) => parkIn !== "" && h.value > Number(parkIn))
-                        .map((h) => (
-                            <option value={h.value} key={h.value}>{h.label}</option>
-                        ))}
-                </select>
+                    type="date"
+                    className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none bg-white"
+                    required
+                />
             </div>
 
             <div className='flex md:flex-col max-md:gap-2 max-md:items-center'>

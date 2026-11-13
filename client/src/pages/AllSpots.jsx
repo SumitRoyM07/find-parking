@@ -47,7 +47,7 @@ const AllSpots = () => {
                             </div>
                             {/* Parking Price per Night */}
                             <div>
-                                <p className='text-xl font-medium text-gray-700'>₹{spot.pricePerHour}/hour</p>
+                                <p className='text-xl font-medium text-gray-700'>₹{spot.pricePerDay}/day</p>
                             </div>
                         </div>
                     </div>
